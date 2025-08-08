@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8BQ382F7KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8BQ382F7KN');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reputation Rescue System - Multi-Client AI Automation</title>
@@ -66,6 +75,23 @@
         .modal-overlay.active .modal-content {
             transform: translateY(0) scale(1);
         }
+        
+        /* Privacy Policy Dropdown */
+        .policy-dropdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .policy-dropdown.active {
+            max-height: 1000px; /* Adjust based on your content */
+            transition: max-height 0.5s ease-in;
+        }
+        .policy-toggle {
+            transition: all 0.3s ease;
+        }
+        .policy-toggle:hover {
+            color: #3b82f6;
+        }
     </style>
 </head>
 <body class="text-gray-900 leading-normal tracking-wide">
@@ -124,7 +150,7 @@
     <section id="demo" class="py-24 md:py-32 bg-white scroll-mt-24">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
-                Here’s exactly how the system works — watch this 1-minute demo
+                Here's exactly how the system works — watch this 1-minute demo
             </h2>
             <div class="mt-12 w-full max-w-4xl mx-auto rounded-2xl shadow-2xl overflow-hidden">
                 <!-- Video Player for the uploaded file -->
@@ -345,6 +371,36 @@
             </div>
             <div class="mt-12 border-t border-gray-700 pt-8">
                 <p>&copy; 2024 Reputation Rescue System. All rights reserved.</p>
+                <div class="mt-4">
+                    <button id="policy-toggle" class="policy-toggle text-blue-400 hover:text-blue-300 focus:outline-none flex items-center justify-center mx-auto">
+                        Privacy Policy
+                        <svg id="policy-chevron" class="w-4 h-4 ml-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="policy-dropdown" class="policy-dropdown text-left text-sm text-gray-400 max-w-3xl mx-auto mt-2">
+                        <div class="py-4">
+                            <p class="mb-2">Effective Date: 08-08-2025</p>
+                            <p class="mb-2">Website: <a href="https://faizanautomates.github.io/reputation-rescue/" class="text-blue-400 hover:underline">https://faizanautomates.github.io/reputation-rescue/</a></p>
+                            <p class="mb-4">Owner: Faizan Automates</p>
+                            
+                            <h4 class="font-semibold mt-4 mb-2">1. Information We Collect</h4>
+                            <p class="mb-4">We use Google Analytics 4 (GA4) to collect anonymous data about how visitors use our website. This includes pages visited, time spent on each page, device type (e.g., mobile or desktop), geographic location (country/city, not precise address), and browser type. This data does not include your name, phone number, email address, or any personally identifiable information.</p>
+                            
+                            <h4 class="font-semibold mt-4 mb-2">2. How We Use This Data</h4>
+                            <p class="mb-4">We use the analytics data to understand how visitors use our website, improve our website's design, performance, and content, and monitor website traffic from different countries.</p>
+                            
+                            <h4 class="font-semibold mt-4 mb-2">3. Third-Party Tools</h4>
+                            <p class="mb-4">We use Google Analytics 4, which is a service provided by Google LLC. Google may store this information on servers in the United States or other countries. For more details, visit: <a href="https://policies.google.com/technologies/partner-sites" class="text-blue-400 hover:underline">https://policies.google.com/technologies/partner-sites</a></p>
+                            
+                            <h4 class="font-semibold mt-4 mb-2">4. Your Choices</h4>
+                            <p class="mb-4">You can opt out of Google Analytics tracking by installing the browser add-on: <a href="https://tools.google.com/dlpage/gaoptout" class="text-blue-400 hover:underline">https://tools.google.com/dlpage/gaoptout</a></p>
+                            
+                            <h4 class="font-semibold mt-4 mb-2">5. Contact Us</h4>
+                            <p class="mb-4">If you have any questions, feel free to contact: <a href="mailto:faizan.automates@gmail.com" class="text-blue-400 hover:underline">faizan.automates@gmail.com</a></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
@@ -474,13 +530,17 @@
                     closeContactModal();
                 }
             });
+
+            // Privacy Policy Toggle
+            const policyToggle = document.getElementById('policy-toggle');
+            const policyDropdown = document.getElementById('policy-dropdown');
+            const policyChevron = document.getElementById('policy-chevron');
+
+            policyToggle.addEventListener('click', () => {
+                policyDropdown.classList.toggle('active');
+                policyChevron.classList.toggle('rotate-180');
+            });
         });
     </script>
 </body>
 </html>
-
-
-
-
-
-
